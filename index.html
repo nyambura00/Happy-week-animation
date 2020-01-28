@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Fade-in & Fade-out</title>
+        <script type="text/javascript">
+        opacity= 0;
+        IntervalID = 0;
+
+        function fade$out(){
+        IntervalID = setInterval(reduce, 300);
+        }
+        function reduce(){ //the core of the animation function
+ var text = document.getElementById("p01");
+ opacity = Number(window.getComputedStyle(text).getPropertyValue("opacity")); //number constructor function converts string functions to numbers since we are dealing wih opacity variable.
+   if (opacity > 0){           //implementation of that number construcor function
+       opacity = opacity-0.1; //implementation of that number construcor function
+       text.style.opacity = opacity;
+       console.log(opacity);
+   }
+   else{
+       clearInterval(IntervalID);
+   }
+        }
+        function fade$in(){
+            IntervalID = setInterval(show, 300);//the larger the ms, the slower the animation.
+        } 
+        function show(){ //another core function part
+            var text = document.getElementById("p01");
+ opacity = Number(window.getComputedStyle(text).getPropertyValue("opacity")); //number constructor function converts string functions to numbers since we are dealing wih opacity variable.
+   if (opacity < 1){           //opacity property values run in between 0 and 1.
+       opacity = opacity+0.1; //implementation of that number construcor function
+       text.style.opacity = opacity;
+       console.log(opacity);
+   }
+   else{
+       clearInterval(IntervalID);
+   }
+        }
+        </script>
+        <link href="animation.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body bgcolor="brown">
+        <h2> Fade in Fade out Animations </h2>
+<p>The interface consists of two buttons, the fade in and out buttons, that basically manipulate the opacity of the in between text!</p>
+<button id= "button1" onclick="fade$out()">Fade Out</button>
+<br>
+<br>
+<p id="p01">HAPPY WEEK TO YOU!</p>
+<br>
+<br>
+<button id="button2" onclick="fade$in()">Fade In</button>
+    </body>
+</html> 
